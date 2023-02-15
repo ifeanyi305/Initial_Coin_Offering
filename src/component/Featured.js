@@ -1,15 +1,15 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import ethers from '../images/ethers.png';
-import { useNavigate } from 'react-router-dom'
 
 const Featured = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <div className="ico_contents">
-      <div className="ICO border-2 border-[#D50DA8] rounded-2xl">
-        <div className="ico_image">
-          <span className="bg-[#fff] p-1 text-end my-4 rounded">upcoming</span>
-          <img src={ethers} className="mt-4 w-full" alt="img"/>
+      <div className="ICO border-2  border-[#D50DA8] rounded-2xl">
+        <div className="ico_image flex relative">
+          <span className="bg-[#fff] px-2 text-center rounded-xl absolute right-2 top-2 border-2 border-[#D50DA8]">upcoming</span>
+          <img src={ethers} className="rounded-2xl" alt="" height={200} width={300} />
         </div>
         <div className="bg-[#5B11F1] p-4 rounded-b-2xl">
           <div className="ico_text flex item-center justify-between">
@@ -30,13 +30,13 @@ const Featured = () => {
             <p className="text-[#fff]">ICO Starts in</p>
             <p className="text-[#22c55e]">02.41.07.50</p>
           </div>
-          <div className='flex justify-center item-center'>
-            <button onClick={() => navigate('/details')} className="btn bg-[#D50DA8] p-1 rounded text-[#fff] mx-2 my-4">View</button>
-            <button className="btn bg-[#D50DA8] p-1 rounded text-[#fff] mx-2 my-4">Share</button>
+          <div className="flex justify-center item-center">
+            <button type="button" onClick={() => navigate('/details')} className="btn bg-[#D50DA8] px-4 py-1  rounded-xl border-[2px] border-white text-[#fff] mx-2 my-4">View</button>
+            <button type="button" className="btn bg-[#D50DA8] px-4 py-1  rounded-xl border-[2px] border-white text-[#fff] mx-2 my-4">Share</button>
           </div>
         </div>
       </div>
-  </div>
+    </div>
   );
 };
 
