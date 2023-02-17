@@ -26,7 +26,7 @@ const FeaturedICO = () => {
   const breakpoint = 768;
   if (screenWidth > breakpoint) {
     return (
-      <div className="flex wrap justify-around item-center">
+      <div className="flex flex-wrap justify-around item-center">
         <Featured />
         <Featured />
         <Featured />
