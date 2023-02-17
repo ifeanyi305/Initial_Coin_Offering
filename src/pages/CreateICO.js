@@ -74,7 +74,7 @@ const CreateICO = () => {
             label="ICO Banner not more than 5MB *"
           />
         </div>
-        <textarea rows="5" cols="30" className="flex p-4 my-2 items-start border-2 border-[#D50DA8] bg-[#fff] dark:bg-[#000] dark:border-[#000] rounded-2xl" />
+        <textarea rows="5" cols="30" className="flex p-4 my-2 items-start border-2 border-[#D50DA8] bg-[#fff] dark:bg-[#000] dark:border-[#fff] rounded-2xl" />
         <p>Details</p>
       </form>
     </>
