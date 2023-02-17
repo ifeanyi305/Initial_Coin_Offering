@@ -9,7 +9,7 @@ const Navbar = () => {
   const [theme, setTheme] = useState(null);
   const [address, setAddress] = useState(null);
 
-  const { connectWallet } = useStateContext();
+  const { connectWallet, buyICO } = useStateContext();
 
   const connect = async () => {
     if (window.ethereum) {
@@ -22,6 +22,7 @@ const Navbar = () => {
     } else {
       toast.info('Please install Metamask');
     }
+    console.log('fir', await buyICO());
   };
 
   useEffect(() => {
