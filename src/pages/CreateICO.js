@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { ref, getDownloadURL, uploadBytesResumable } from 'firebase/storage';
-import { storage } from '../firebase';
+import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
+// eslint-disable-next-line
+import PropTypes from 'prop-types';
+import { db, storage } from '../firebase';
 import FormFeild from '../component/FormFeild';
 
 const initialState = {
@@ -16,11 +20,12 @@ const initialState = {
   description: '',
 };
 
-const CreateICO = () => {
+const CreateICO = ({ address }) => {
   const [form, setForm] = useState(initialState);
   const [tokenAddress, setTokenAddress] = useState('');
   const [ICOImageFile, setICOImageFile] = useState(null);
   const [logoFile, setlogoFile] = useState(null);
+  // const [accountAddress, setaccountAddress] = useState(null);
 
   const {
     tokenAmount,
@@ -34,8 +39,12 @@ const CreateICO = () => {
     description,
   } = form;
 
+  const navigate = useNavigate();
+
   const handleChange = (name, e) => {
     setForm({ ...form, [name]: e.target.value });
+    console.log(form);
+    // setaccountAddress(null);
   };
 
   const handleAddress = (e) => {
@@ -70,11 +79,11 @@ const CreateICO = () => {
           if (name === 'banner') {
             setICOImageFile(downloadUrl);
             toast.info('Banner upload to firebase successfully');
-            console.log(ICOImageFile);
+            // console.log(ICOImageFile);
           } else {
             setlogoFile(downloadUrl);
             toast.info('Logo upload to firebase successfully');
-            console.log(logoFile);
+            // console.log(logoFile);
           }
         });
       },
@@ -87,13 +96,35 @@ const CreateICO = () => {
     } else {
       uploadFile('logo', e.target?.files[0]);
     }
-    // console.log(ICOImageFile, logoFile);
   };
 
-  // useEffect(() => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (ICOImageFile && logoFile && tokenAddress) {
+      if (address !== '') {
+        try {
+          await addDoc(collection(db, 'ICOs'), {
+            ...form,
+            timestamp: serverTimestamp(),
+            IcoOwner: address,
+            IcoAddress: '',
+            tokenAddress,
+            logoImage: logoFile,
+            ICOBanner: ICOImageFile,
+          });
+          toast.success('ICO Created successfully');
+        } catch (err) {
+          console.log(err);
+        }
+      } else {
+        return toast.error('Make sure your wallet is connected');
+      }
+    } else {
+      return toast.error('All fields are mandatory to fill');
+    }
 
-  //   ICOImageFile && logoFile && uploadFile();
-  // }, [ICOImageFile, logoFile]);
+    return navigate('/');
+  };
 
   const style = {
     color: 'text-center my-1 dark:text-[#fff]',
@@ -114,7 +145,7 @@ const CreateICO = () => {
           Checkout the faq or contact support for further clarification
         </p>
       </div>
-      <form className="dark:bg-[#2D3133] p-4 md:w-4/5 m-auto rounded-2xl mb-2 py-4 bg-[#D9D9D9]">
+      <form onSubmit={handleSubmit} className=" flex flex-col dark:bg-[#2D3133] p-4 md:w-4/5 m-auto rounded-2xl mb-2 py-4 bg-[#D9D9D9]">
         <div>
           <h1 className={style.formColor}>Token Details</h1>
           <FormFeild
@@ -178,7 +209,7 @@ const CreateICO = () => {
             label="Other link"
           />
           <div>
-            <label htmlFor="userinput" className="dark:text-[#fff]" aria-label="">Upload Token Logo 32x32 *</label>
+            <span htmlFor="userinput" className="dark:text-[#fff]" aria-label="">Upload Token Logo 32x32 *</span>
             <input
               id="userinput"
               className="input border-2 p-4 border-[#D50DA8] bg-[#fff] dark:bg-[#000] dark:border-[#fff] rounded-2xl block"
@@ -187,7 +218,7 @@ const CreateICO = () => {
             />
           </div>
           <div>
-            <label htmlFor="userinput" className="dark:text-[#fff]" aria-label="">ICO Banner not more than 5MB *</label>
+            <span htmlFor="userinput" className="dark:text-[#fff]" aria-label="">ICO Banner not more than 5MB *</span>
             <input
               id="userinput"
               className="input border-2 p-4 border-[#D50DA8] bg-[#fff] dark:bg-[#000] dark:border-[#fff] rounded-2xl block"
@@ -196,6 +227,7 @@ const CreateICO = () => {
             />
           </div>
         </div>
+        <p>Project Details</p>
         <textarea
           value={description}
           onChange={(e) => handleChange('description', e)}
@@ -203,12 +235,17 @@ const CreateICO = () => {
           cols="30"
           className="flex p-4 my-2 items-start border-2 border-[#D50DA8] bg-[#fff] dark:bg-[#000] dark:border-[#fff] rounded-2xl"
         />
-        <p>Details</p>
         <p>{ICOImageFile}</p>
         <p>{logoFile}</p>
+
+        <button type="submit" className="btn bg-[#D50DA8] px-4 py-1 self-center  rounded-xl border-[2px] border-white text-[#fff] mx-2 my-4">Create ICO</button>
       </form>
     </>
   );
+};
+
+CreateICO.propTypes = {
+  address: PropTypes.string.isRequired,
 };
 
 export default CreateICO;

@@ -1,29 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { toast } from 'react-toastify';
+// eslint-disable-next-line
+import PropTypes from 'prop-types';
 import { BsSun, BsMoonFill } from 'react-icons/bs';
-import { useStateContext } from '../context';
 
-// import { ethers } from 'ethers';
-
-const Navbar = () => {
+const Navbar = ({ connect, address }) => {
   const [theme, setTheme] = useState(null);
-  const [address, setAddress] = useState(null);
-
-  const { connectWallet, buyICO } = useStateContext();
-
-  const connect = async () => {
-    if (window.ethereum) {
-      const accounts = await connectWallet();
-      setAddress(accounts[0]);
-
-      toast.success('Wallet connected successfuly', {
-        position: toast.POSITION.TOP_CENTER,
-      });
-    } else {
-      toast.info('Please install Metamask');
-    }
-    console.log('fir', await buyICO());
-  };
 
   useEffect(() => {
     if (theme === 'dark') {
@@ -60,4 +41,8 @@ const Navbar = () => {
   );
 };
 
+Navbar.propTypes = {
+  address: PropTypes.string.isRequired,
+  connect: PropTypes.func.isRequired,
+};
 export default Navbar;

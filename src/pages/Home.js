@@ -29,8 +29,8 @@ const Home = () => {
         </div>
         <ul className={!featured ? 'hidden' : 'launchpad p-4 mt-2 flex justify-center item-center border-2 bg-[#D9D9D9] dark:bg-[#2D3133] border-[#5B11F1] rounded-2xl'}>
           <div className="flex justify-between item-center gap-x-4">
-            <button type="button" onClick={() => navigate('/CreateICO')} className="bg-[#5B11F1] dark:text-[#fff] px-4 py-2  rounded-xl border-[2px] border-white font-extrabold cursor-pointer">Create Launchpad</button>
-            <button type="button" onClick={() => navigate('/ico-list')} className="p-1 bg-[#5B11F1] dark:text-[#fff] px-4 py-2  rounded-xl border-[2px] border-white font-extrabold cursor-pointer">Launchpad list</button>
+            <button type="button" onClick={() => navigate('/CreateICO')} className="bg-[#5B11F1] text-[#fff] px-4 py-2  rounded-xl border-[2px] border-white font-extrabold cursor-pointer">Create Launchpad</button>
+            <button type="button" onClick={() => navigate('/ico-list')} className="p-1 bg-[#5B11F1] text-[#fff] px-4 py-2  rounded-xl border-[2px] border-white font-extrabold cursor-pointer">Launchpad list</button>
           </div>
         </ul>
       </div>
