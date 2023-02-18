@@ -5,8 +5,8 @@ import ethers from '../images/ethers.png';
 const Featured = () => {
   const navigate = useNavigate();
   return (
-    <div className="ico_contents">
-      <div className="ICO border-2  border-[#D50DA8] rounded-2xl">
+    <div className="ico_contents py-4">
+      <div className="ICO border-2 border-[#D50DA8] rounded-2xl">
         <div className="ico_image flex relative">
           <span className="bg-[#fff] px-2 text-center rounded-xl absolute right-2 top-2 border-2 border-[#D50DA8]">upcoming</span>
           <img src={ethers} className="rounded-2xl" alt="" height={200} width={300} />
