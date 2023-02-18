@@ -23,6 +23,7 @@
   "ignorePatterns": [
     "dist/",
     "build/",
-    "src/context"
+    "src/context",
+    "src/firebase"
   ]
 }
