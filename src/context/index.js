@@ -42,7 +42,7 @@ export const StateContextProvider = ({ children }) => {
       const tokenContract = new ethers.Contract(
         tokenAddress,
         ERC20abi,
-        signer
+        provider
       );
   
       const tokenName = await tokenContract.name()
@@ -55,6 +55,7 @@ export const StateContextProvider = ({ children }) => {
         tokenName, tokenSymbol, totalSupply
       }}
       // console.log(tokenName, tokenSymbol, totalSupply);
+      // console.log(tokenName);
       return res;
     } catch (error) {
       // console.log('getTData', error)

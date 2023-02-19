@@ -193,13 +193,13 @@ const CreateICO = ({ address }) => {
           <FormFeild
             handleChange={(e) => handleChange('tokenAmount', e)}
             value={tokenAmount}
-            inputType="text"
+            inputType="number"
             label="Token amount for ICO *"
           />
           <FormFeild
             handleChange={(e) => handleChange('AmountToRaise', e)}
             value={AmountToRaise}
-            inputType="text"
+            inputType="number"
             label="Target amount in ETH *"
           />
           <FormFeild

@@ -123,12 +123,6 @@ const IcoList = () => {
                   />
 
                 ))}
-                {/* <Featured />
-                <Featured />
-                <Featured />
-                <Featured />
-                <Featured />
-                <Featured /> */}
               </div>
             </div>
           </div>

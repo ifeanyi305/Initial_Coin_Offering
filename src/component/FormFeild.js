@@ -9,6 +9,7 @@ const FormFeild = ({
     <label htmlFor="userinput" className="dark:text-[#fff]" aria-label="">{label}</label>
     <input
       // id="userinput"
+      required
       className="input border-2 p-4 border-[#D50DA8] bg-[#fff] dark:bg-[#D9D9D9] dark:border-[#fff] rounded-2xl block"
       type={inputType}
       value={value}
