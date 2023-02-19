@@ -1,9 +1,16 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import ethers from '../images/ethers.png';
 
-const Featured = () => {
+const ICOCard = ({ ico }) => {
   const navigate = useNavigate();
+
+  const {
+    tokenName, AmountToRaise, AmountRaised, startDate, endDate, id, logoImage, ICOBanner,
+  } = ico;
+
+  console.log(tokenName, AmountToRaise, AmountRaised, startDate, endDate, id, logoImage, ICOBanner);
   return (
     <div className="ico_contents py-4">
       <div className="ICO border-2 border-[#D50DA8] rounded-2xl">
@@ -40,4 +47,9 @@ const Featured = () => {
   );
 };
 
-export default Featured;
+ICOCard.propTypes = {
+  ico: PropTypes.oneOfType([PropTypes.object]).isRequired,
+  // showDetails: PropTypes.func.isRequired,
+};
+
+export default ICOCard;

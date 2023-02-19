@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { ref, getDownloadURL, uploadBytesResumable } from 'firebase/storage';
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 // eslint-disable-next-line
 import PropTypes from 'prop-types';
+import { useStateContext } from '../context';
 import { db, storage } from '../firebase';
 import FormFeild from '../component/FormFeild';
 
@@ -25,6 +26,8 @@ const CreateICO = ({ address }) => {
   const [tokenAddress, setTokenAddress] = useState('');
   const [ICOImageFile, setICOImageFile] = useState(null);
   const [logoFile, setlogoFile] = useState(null);
+  const [tokenData, settokenData] = useState(null);
+  // const [errorMsg, setErrorMsg] = useState(null);
   // const [accountAddress, setaccountAddress] = useState(null);
 
   const {
@@ -40,10 +43,28 @@ const CreateICO = ({ address }) => {
   } = form;
 
   const navigate = useNavigate();
+  const { getTokenData } = useStateContext();
+
+  const fetchTokenDetails = async () => {
+    let data;
+    if (tokenAddress.length === 42) {
+      if (address === '') return toast.error('Make sure your wallet is connected');
+      if (tokenAddress === '') return toast.error('Make sure you enter correct Token Address');
+
+      data = await getTokenData(tokenAddress);
+
+      if (data?.data) {
+        settokenData({ ...data?.data });
+      } else {
+        toast.info(data.error.reason);
+      }
+    }
+    return data;
+  };
 
   const handleChange = (name, e) => {
     setForm({ ...form, [name]: e.target.value });
-    console.log(form);
+    // console.log(form);
     // setaccountAddress(null);
   };
 
@@ -78,11 +99,11 @@ const CreateICO = ({ address }) => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadUrl) => {
           if (name === 'banner') {
             setICOImageFile(downloadUrl);
-            toast.info('Banner upload to firebase successfully');
+            toast.info('Banner uploaded successfully');
             // console.log(ICOImageFile);
           } else {
             setlogoFile(downloadUrl);
-            toast.info('Logo upload to firebase successfully');
+            toast.info('Logo uploaded successfully');
             // console.log(logoFile);
           }
         });
@@ -100,7 +121,7 @@ const CreateICO = ({ address }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (ICOImageFile && logoFile && tokenAddress) {
+    if (ICOImageFile && logoFile && tokenAddress && tokenData) {
       if (address !== '') {
         try {
           await addDoc(collection(db, 'ICOs'), {
@@ -109,8 +130,10 @@ const CreateICO = ({ address }) => {
             IcoOwner: address,
             IcoAddress: '',
             tokenAddress,
+            AmountRaised: 0,
             logoImage: logoFile,
             ICOBanner: ICOImageFile,
+            ...tokenData,
           });
           toast.success('ICO Created successfully');
         } catch (err) {
@@ -125,6 +148,10 @@ const CreateICO = ({ address }) => {
 
     return navigate('/');
   };
+
+  useEffect(() => {
+    fetchTokenDetails();
+  }, [tokenAddress]);
 
   const style = {
     color: 'text-center my-1 dark:text-[#fff]',
@@ -154,6 +181,12 @@ const CreateICO = ({ address }) => {
             inputType="text"
             label="Paste Your Token Contract Address"
           />
+          <div className="flex w-4/5 justify-between items-center font-bold text-green-600">
+            <span>{tokenData && tokenData.tokenName}</span>
+            <span>{tokenData && tokenData.tokenSymbol}</span>
+            <span>{tokenData && parseFloat(tokenData.totalSupply).toLocaleString('en') }</span>
+          </div>
+          {/* <span>{errorMsg && errorMsg}</span> */}
         </div>
         <h1 className={style.formColor}>ICO Details</h1>
         <div className={style.formGrid}>
@@ -235,9 +268,6 @@ const CreateICO = ({ address }) => {
           cols="30"
           className="flex p-4 my-2 items-start border-2 border-[#D50DA8] bg-[#fff] dark:bg-[#000] dark:border-[#fff] rounded-2xl"
         />
-        <p>{ICOImageFile}</p>
-        <p>{logoFile}</p>
-
         <button type="submit" className="btn bg-[#D50DA8] px-4 py-1 self-center  rounded-xl border-[2px] border-white text-[#fff] mx-2 my-4">Create ICO</button>
       </form>
     </>

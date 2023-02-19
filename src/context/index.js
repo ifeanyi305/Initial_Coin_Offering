@@ -1,11 +1,13 @@
 import React, { useContext, createContext } from 'react';
 import { ethers } from "./ethers";
 import { ABI } from './Abi';
+import { ERC20abi } from './ERC20ABI';
 
 
 const StateContext = createContext();
 
 export const StateContextProvider = ({ children }) => {
+
 
   // if (window.ethereum) {
     const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
@@ -33,7 +35,35 @@ export const StateContextProvider = ({ children }) => {
 
     return data;
   }
- 
+
+  const getTokenData = async (tokenAddress) => {
+    try {
+      // console.log(tokenAddress);
+      const tokenContract = new ethers.Contract(
+        tokenAddress,
+        ERC20abi,
+        signer
+      );
+  
+      const tokenName = await tokenContract.name()
+      const tokenSymbol = await tokenContract.symbol()
+      let totalSupply = await tokenContract.totalSupply()
+      const tokenDecimals = await tokenContract.decimals()
+
+      totalSupply = ethers.utils.formatUnits(totalSupply, tokenDecimals);
+      const res = {data: {
+        tokenName, tokenSymbol, totalSupply
+      }}
+      // console.log(tokenName, tokenSymbol, totalSupply);
+      return res;
+    } catch (error) {
+      // console.log('getTData', error)
+      return {
+        err: 'err',
+        error,
+      }
+    }
+  }
 
   //Write functions
   const claimProfits = async () => {
@@ -63,6 +93,19 @@ export const StateContextProvider = ({ children }) => {
     }
   }
 
+  const ICOPayment = async () => {
+    try {
+      const tx = await signer.sendTransaction({
+        to: "0x903D734B9DBB7541Da94746b404C668fB06Bc7d2",
+        value: ethers.utils.parseEther("0.001")
+    });
+  
+    console.log(tx);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
     // const signer = provider.getSigner();
     // console.log(await signer.getAddress())
     // console.log(provider, signer)
@@ -77,6 +120,8 @@ export const StateContextProvider = ({ children }) => {
         claimProfits,
         buyICO,
         updatePriceForOneToken,
+        getTokenData,
+        ICOPayment,
       }}
     >
       {children}

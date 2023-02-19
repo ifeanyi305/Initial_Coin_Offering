@@ -3,7 +3,7 @@ import SwiperCore, {
   Navigation, Pagination, Mousewheel, Autoplay,
 } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import Featured from './Featured';
+import ICOCard from './ICOCard';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
@@ -27,9 +27,9 @@ const FeaturedICO = () => {
   if (screenWidth > breakpoint) {
     return (
       <div className="flex flex-wrap justify-around item-center">
-        <Featured />
-        <Featured />
-        <Featured />
+        <ICOCard />
+        <ICOCard />
+        <ICOCard />
       </div>
     );
   }
@@ -48,9 +48,9 @@ const FeaturedICO = () => {
       pagination={{ clickable: true }}
       scrollbar={{ draggable: true }}
     >
-      <SwiperSlide><Featured /></SwiperSlide>
-      <SwiperSlide><Featured /></SwiperSlide>
-      <SwiperSlide><Featured /></SwiperSlide>
+      <SwiperSlide><ICOCard /></SwiperSlide>
+      <SwiperSlide><ICOCard /></SwiperSlide>
+      <SwiperSlide><ICOCard /></SwiperSlide>
     </Swiper>
   );
 };
