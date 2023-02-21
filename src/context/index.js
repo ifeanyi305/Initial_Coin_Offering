@@ -30,6 +30,29 @@ export const StateContextProvider = ({ children }) => {
     return await contract.owner()
   }
 
+  const getEthBal = async (addr) => {
+    let balance = await provider.getBalance(addr);
+    balance = ethers.utils.formatEther(balance);
+    // console.log(balance);
+    return balance;
+  }
+
+  const getUserICOTokenBal = async (tokenAddr, userAddr) => {
+    try {
+      const tokenContract = new ethers.Contract(
+        tokenAddr,
+        ERC20abi,
+        provider
+      );
+  
+      let UserTokenBalance = await tokenContract.balanceOf(userAddr);
+
+      return UserTokenBalance.toString();
+    } catch (error) {
+      return error;
+    }
+  }
+
   const getICOTokenPrice = async () => {
     const data = await contract.priceForOneToken();
 
@@ -55,7 +78,6 @@ export const StateContextProvider = ({ children }) => {
         tokenName, tokenSymbol, totalSupply
       }}
       // console.log(tokenName, tokenSymbol, totalSupply);
-      // console.log(tokenName);
       return res;
     } catch (error) {
       // console.log('getTData', error)
@@ -67,15 +89,20 @@ export const StateContextProvider = ({ children }) => {
   }
 
   //Write functions
-  const claimProfits = async () => {
+  const claimProfits = async (amount) => {
     const data = await contract.connect(signer).claimProfits();
 
     return data;
   }
 
-  const buyICO = async () => {
+  const buyICO = async (contractAddr, amount) => {
+    const ICOcontract = new ethers.Contract(
+      contractAddr,
+      ABI,
+      signer
+    );
     try {
-      const data = await contract.buy({ value: ethers.utils.parseEther('0.1')});
+      const data = await ICOcontract.buy({ value: ethers.utils.parseEther(amount)});
 
       console.log('data', data);
       return data;
@@ -107,6 +134,22 @@ export const StateContextProvider = ({ children }) => {
     }
   }
 
+  const transferOwnership = async (addr) => {
+
+  }
+
+  const addICOAddress = async () => {
+    
+  }
+
+  const transferICOToken = async () => {
+    
+  }
+
+  const withdrawRemainingToken = async () => {
+    
+  }
+
     // const signer = provider.getSigner();
     // console.log(await signer.getAddress())
     // console.log(provider, signer)
@@ -123,6 +166,8 @@ export const StateContextProvider = ({ children }) => {
         updatePriceForOneToken,
         getTokenData,
         ICOPayment,
+        getUserICOTokenBal,
+        getEthBal,
       }}
     >
       {children}

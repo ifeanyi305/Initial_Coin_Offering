@@ -14,17 +14,15 @@ const ICOCard = ({ ico }) => {
 
     if (currentDate < startDate) {
       return 'Upcoming';
-    } else if (currentDate > startDate && currentDate < endDate) {
+    } if (currentDate > startDate && currentDate < endDate) {
       return 'Live';
-    } else if (currentDate > endDate) {
-      return 'Ended'
+    } if (currentDate > endDate) {
+      return 'Ended';
     }
 
-    return 'Checking...'
-  }
+    return 'Checking...';
+  };
 
-
-  console.log(tokenName, AmountToRaise, AmountRaised, startDate, endDate, id, logoImage, ICOBanner);
   return (
     <div className="ico_contents py-4">
       <div className="ICO border-2 border-[#D50DA8] rounded-2xl">
