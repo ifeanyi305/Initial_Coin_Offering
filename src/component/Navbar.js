@@ -37,7 +37,7 @@ const Navbar = ({ connect, address }) => {
         <div className="flex items-center gap-2">
           <ul className={!toggle ? 'ulOff' : 'ul'}>
             <li className={style.padding}><Link to="/">Home</Link></li>
-            <li className={style.padding}><Link to="/ico-list">Ico List</Link></li>
+            <li className={style.padding}><Link to="/ico-list">ICO List</Link></li>
             <li className={style.padding}><Link to="/CreateICO">Create ICO</Link></li>
             <li className={style.padding}><Link to="/dashboard">Dashboard</Link></li>
             <li className={style.padding}><Link to="/faq">FAQ</Link></li>
