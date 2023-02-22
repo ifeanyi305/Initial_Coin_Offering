@@ -6,8 +6,10 @@ import Home from './pages/Home';
 import Details from './pages/Details';
 import Navbar from './component/Navbar';
 import IcoList from './pages/IcoList';
+import ManageIco from './pages/Manage_ico';
 import CreateICO from './pages/CreateICO';
 import Footer from './component/Footer';
+import AdminDashboard from './pages/AdminDashboard';
 
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -41,6 +43,8 @@ const App = () => {
           <Route path="/ico-list" element={<IcoList />} />
           <Route path="/details/:id" element={<Details address={address} />} />
           <Route path="/CreateICO" element={<CreateICO address={address} />} />
+          <Route path="/dashboard" element={<ManageIco />} />
+          <Route path="/AdminDashboard" element={<AdminDashboard />} />
         </Routes>
         <ToastContainer
           position="top-center"
