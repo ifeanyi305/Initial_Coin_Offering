@@ -137,7 +137,8 @@ const CreateICO = ({ address }) => {
           });
           toast.success('ICO Created successfully');
         } catch (err) {
-          console.log(err);
+          // console.log(err);
+          return err;
         }
       } else {
         return toast.error('Make sure your wallet is connected');
