@@ -35,7 +35,7 @@ const Navbar = ({ connect, address }) => {
       <header className="flex flex-wrap justify-between items-center bg-[#5B11F1] p-4">
         <h1>Logo</h1>
         <div className="flex items-center gap-2">
-          <ul className={!toggle ? 'ulOff' : 'ul'}>
+          <ul className={!toggle ? 'ul' : 'ulOff'}>
             <li className={style.padding}><Link to="/">Home</Link></li>
             <li className={style.padding}><Link to="/ico-list">ICO List</Link></li>
             <li className={style.padding}><Link to="/CreateICO">Create ICO</Link></li>
@@ -53,7 +53,7 @@ const Navbar = ({ connect, address }) => {
             {theme === 'dark' ? <BsSun /> : <BsMoonFill />}
           </button>
           <div>
-            <button className="sm:hiddens" type="button" onClick={toggleNav}>
+            <button className="sm:hidden" type="button" onClick={toggleNav}>
               <GiHamburgerMenu />
             </button>
           </div>
