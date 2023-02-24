@@ -27,6 +27,7 @@ const CreateICO = ({ address }) => {
   const [ICOImageFile, setICOImageFile] = useState(null);
   const [logoFile, setlogoFile] = useState(null);
   const [tokenData, settokenData] = useState(null);
+  const [pricePerToken, setPricePerToken] = useState(0);
   // const [errorMsg, setErrorMsg] = useState(null);
   // const [accountAddress, setaccountAddress] = useState(null);
 
@@ -133,6 +134,8 @@ const CreateICO = ({ address }) => {
             AmountRaised: 0,
             logoImage: logoFile,
             ICOBanner: ICOImageFile,
+            status: 'pending',
+            ETHpricePerToken: pricePerToken,
             ...tokenData,
           });
           toast.success('ICO Created successfully');
@@ -149,6 +152,16 @@ const CreateICO = ({ address }) => {
 
     return navigate('/');
   };
+
+  const getPricePertoken = () => {
+    if (AmountToRaise && AmountToRaise) {
+      setPricePerToken(Number(AmountToRaise / tokenAmount).toFixed(10).replace(/\.?0+$/, ''));
+    }
+  };
+
+  useEffect(() => {
+    getPricePertoken();
+  }, [AmountToRaise, AmountToRaise]);
 
   useEffect(() => {
     fetchTokenDetails();
@@ -269,6 +282,12 @@ const CreateICO = ({ address }) => {
           cols="30"
           className="flex p-4 my-2 items-start border-2 border-[#D50DA8] bg-[#fff] dark:bg-[#000] dark:border-[#fff] rounded-2xl"
         />
+        <span className=" text-blue-600 font-bold">
+          {pricePerToken}
+          {' '}
+          ETH per Token
+        </span>
+
         <button type="submit" className="btn bg-[#D50DA8] px-4 py-1 self-center  rounded-xl border-[2px] border-white text-[#fff] mx-2 my-4">Create ICO</button>
       </form>
     </>

@@ -7,14 +7,14 @@ import {
 } from 'firebase/firestore';
 // eslint-disable-next-line
 import PropTypes from 'prop-types';
-import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
 import { db } from '../firebase';
 import PendingIco from '../component/PendingIco';
 import ActiveICO from '../component/ActiveICO';
 
 const ManageIco = ({ address }) => {
   const [ICOs, setICOs] = useState([]);
-  const [userICOs, setUserICOs] = useState([{}]);
+  const [userICOs, setUserICOs] = useState([]);
   const [pendingICOs, setPendingICOs] = useState(null);
 
   const getICOData = async () => {
@@ -42,15 +42,16 @@ const ManageIco = ({ address }) => {
     getUserICos();
   }, [ICOs]);
 
-  console.log(userICOs);
-  console.log(pendingICOs, 'pending');
+  // console.log(userICOs);
+  // console.log(pendingICOs, 'pending');
 
   const manage = {
     style: 'text-[#D50DA8] text-center my-2 font-extrabold',
     font: 'text-[#000] text-center my-2 font-extrabold',
   };
 
-  if (address === '') toast.info('Please Connect Your Wallet!');
+  // if (address === '') toast.info('Please Connect Your Wallet!');
+  // if (address === '') toast.info('Please Connect Your Wallet!');
 
   return (
     <>
@@ -63,7 +64,7 @@ const ManageIco = ({ address }) => {
             <h1 className={manage.style}>Pending ICO</h1>
             <div className="bg-[#D9D9D9] md:w-96 my-4 w-full p-4 rounded-2xl">
               <span>{pendingICOs ? '' : 'You Dont Have Any Pending ICO'}</span>
-              
+
               {pendingICOs && (
                 pendingICOs.map((ico) => (
                   <PendingIco
@@ -72,17 +73,23 @@ const ManageIco = ({ address }) => {
                   />
                 ))
               )}
-              {/* <PendingIco /> */}
             </div>
           </div>
           <div>
             <h1 className={manage.style}>Active ICO</h1>
-            <div className="bg-[#D9D9D9] md:w-96 my-4 w-full p-4 rounded-2xl">
+            <div className="flex flex-col gap-6 bg-[#D9D9D9] md:w-96 my-4 w-full p-4 rounded-2xl">
               <h1 className={manage.font}>
                 You can
                 withdraw  Eth and the remaining token balance once ICO ends
               </h1>
-              <ActiveICO />
+              {userICOs && (
+                userICOs.map((ico) => (
+                  <ActiveICO
+                    key={ico.id}
+                    ico={ico}
+                  />
+                ))
+              )}
             </div>
           </div>
         </div>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import { useStateContext } from './context';
 import Home from './pages/Home';
@@ -44,7 +44,15 @@ const App = () => {
           <Route path="/details/:id" element={<Details address={address} />} />
           <Route path="/CreateICO" element={<CreateICO address={address} />} />
           <Route path="/dashboard" element={<ManageIco address={address} />} />
-          <Route path="/AdminDashboard" element={<AdminDashboard />} />
+          <Route
+            path="/AdminDashboard"
+            element={
+              address ? (
+                <AdminDashboard address={address} />) : (
+                  <Navigate to="/" />
+              )
+            }
+          />
         </Routes>
         <ToastContainer
           position="top-center"

@@ -2,17 +2,17 @@ import React from 'react';
 
 const Footer = () => {
   const style = {
-    color: 'dark:text-[#fff]',
+    color: 'text-[#fff] font-bold',
   };
   return (
-    <footer className="flex justify-between items-center bg-[#5B11F1] p-4">
+    <footer className="flex justify-between items-center bg-[#5B11F1] p-4 ">
       <div>
         <p className={style.color}>Copyright&copy; of 2023</p>
         <p className={style.color}>All rights reserved</p>
       </div>
-      <div>
+      <div className="flex flex-col justify-center items-center">
         <h2 className={style.color}>Powered By</h2>
-        <h1 className="font-extrabold text-lg text-[#D50DA8]">BUNZZ.DEV</h1>
+        <h1 className="font-extrabold text-2xl text-[#D50DA8]">BUNZZ.DEV</h1>
       </div>
       <div className="flex item-center gap-3">
         <p className={style.color}>telegram</p>
