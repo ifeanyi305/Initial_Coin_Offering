@@ -13,7 +13,7 @@ const Content = ({ ICO }) => {
       <div>
         <div className="flex justify-between item-center">
           <h1 className="dark:text-[#fff]">Ico Address</h1>
-          <p className="dark:text-[#fff]">{IcoAddress}</p>
+          <p className="dark:text-[#fff]">{IcoAddress ? `${IcoAddress.slice(0, 7)} .... ${IcoAddress.slice(36)}` : 'No ICO Address Yet'}</p>
         </div>
         <div className="flex justify-between item-center">
           <h1 className="dark:text-[#fff]">Token name</h1>

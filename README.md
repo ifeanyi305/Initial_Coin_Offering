@@ -1,70 +1,56 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Easy Launch**
 
-## Available Scripts
+Easy Launch is a cutting-edge web3 blockchain platform that provides an all-in-one solution for users seeking to launch their own cryptocurrency. With a robust and secure architecture, Easy Launch enables users to create and manage their own digital assets and smart contracts, as well as conduct seamless and secure transactions on the blockchain.
 
-In the project directory, you can run:
+To get a local copy up and running, follow these steps.
 
-### `npm start`
+- npm
+  ```sh
+  npm install npm@latest -g
+  ```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+**Install MetaMask**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Note: The project currently runs only on Goerli Testnet**
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Setup
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Clone the repo by running the command
+   ```sh
+    git clone https://github.com/ifeanyi305/initial_coin_offering.git
+   ```
+2. Open the directory of the project
+   ```sh
+   cd initial_coin_offering
+   ```
+3. Install project dependencies
+   ```sh
+   run npm install
+   ```
+4. Open the html file
+   ```sh
+   run npm start
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Upcoming featues
 
-### `npm run eject`
+**USERS DEPLOY ICO CONTACT FROM THE FRONT END**
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+👤 **Author**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- GitHub: [@V-blaze](https://github.com/V-Blaze)
+- Twitter: [@blaze_valentine](https://twitter.com/blaze_valentine)
+- LinkedIn: [@valentine-blaze](https://www.linkedin.com/in/valentine-blaze/)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+👤 **Ifeanyi Oti**
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- GitHub: [@ifeanyi305](https://github.com/ifeanyi305)
+- Twitter: [@OtiJoseph305](https://twitter.com/OtiJoseph305)
+- LinkedIn: [oti-joseph-ifeanyi](https://linkedin.com/in/oti-joseph-ifeanyi)
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
