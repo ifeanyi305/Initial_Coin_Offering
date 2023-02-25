@@ -33,16 +33,28 @@ const Navbar = ({ connect, address }) => {
   };
   return (
     <>
-      <header className="flex flex-wrap justify-between items-center bg-[#5B11F1] p-4">
+      <header className="flex sticky z-50 w-full top-0 flex-wrap justify-between items-center bg-[#5B11F1] p-4">
         <img src={easylaunch} alt="Easy Launch" height={24} width={102} />
         <div className="flex items-center gap-2">
-          <ul className={!toggle ? 'ul' : 'ulOff'}>
+          <ul className="nav md:flex items-center flex-wrap">
             <li className={style.padding}><Link to="/">Home</Link></li>
             <li className={style.padding}><Link to="/ico-list">ICO List</Link></li>
             <li className={style.padding}><Link to="/CreateICO">Create ICO</Link></li>
             <li className={style.padding}><Link to="/dashboard">Dashboard</Link></li>
             <li className={style.padding}><Link to="/faq">FAQ</Link></li>
             {/* <li className={style.padding}><Link to="/AdminDashboard">Admin</Link></li> */}
+          </ul>
+          <ul className={toggle ? 'ul' : 'ulOff'}>
+            {/* eslint-disable-next-line */}
+            <li onClick={toggleNav} className={style.padding}><Link to="/">Home</Link></li>
+            {/* eslint-disable-next-line */}
+            <li onClick={toggleNav} className={style.padding}><Link to="/ico-list">ICO List</Link></li>
+            {/* eslint-disable-next-line */}
+            <li onClick={toggleNav} className={style.padding}><Link to="/CreateICO">Create ICO</Link></li>
+            {/* eslint-disable-next-line */}
+            <li onClick={toggleNav} className={style.padding}><Link to="/dashboard">Dashboard</Link></li>
+            {/* eslint-disable-next-line */}
+            <li onClick={toggleNav} className={style.padding}><Link to="/faq">FAQ</Link></li>
           </ul>
           <button
             onClick={connect}

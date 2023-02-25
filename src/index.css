@@ -7,6 +7,25 @@
   margin: auto;
 }
 
+.faq {
+  width: fit-content;
+  margin: auto;
+  margin-bottom: 10%;
+}
+
+.footer {
+  z-index: 20;
+  bottom: 0;
+}
+
+@media screen and (min-width: 40em) {
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+}
+
 .input {
   width: 100%;
 }
@@ -39,4 +58,17 @@
     animation: hamburger-slide 0.5s ease-in-out;
     z-index: 10000;
   }
+
+  .nav {
+    display: none;
+  }
+}
+
+.more {
+  height: 0;
+  overflow: hidden;
+}
+
+.moreOn {
+  height: 100%;
 }
