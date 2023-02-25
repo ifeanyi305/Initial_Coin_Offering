@@ -1,4 +1,3 @@
-
 **Easy Launch**
 
 Easy Launch is a cutting-edge web3 blockchain platform that provides an all-in-one solution for users seeking to launch their own cryptocurrency. With a robust and secure architecture, Easy Launch enables users to create and manage their own digital assets and smart contracts, as well as conduct seamless and secure transactions on the blockchain.
@@ -50,7 +49,4 @@ To get a local copy up and running, follow these steps.
 - GitHub: [@ifeanyi305](https://github.com/ifeanyi305)
 - Twitter: [@OtiJoseph305](https://twitter.com/OtiJoseph305)
 - LinkedIn: [oti-joseph-ifeanyi](https://linkedin.com/in/oti-joseph-ifeanyi)
-
-
-
 
