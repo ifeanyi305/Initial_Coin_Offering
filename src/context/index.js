@@ -7,11 +7,13 @@ import { ERC20abi } from './ERC20ABI';
 const StateContext = createContext();
 
 export const StateContextProvider = ({ children }) => {
+  let provider;
+  let signer;
 
-  // if (window.ethereum) {
-    const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
-    const signer = provider.getSigner();
-  // }
+  if (window.ethereum) {
+    provider = new ethers.providers.Web3Provider(window.ethereum, "any");
+    signer = provider.getSigner();
+  }
   const contractAddress = '0x4260bEf7EDE880845E8463209970bdC600B44D56';
 
   const contract = new ethers.Contract(
@@ -114,9 +116,12 @@ export const StateContextProvider = ({ children }) => {
     try {
       const data = await contract.updatePriceForOneToken({ value: ethers.utils.parseEther(amount)});
 
-      return data;
+      return {
+        res: 'ok',
+        data,
+      }
     } catch (error) {
-      return error;
+      return {error};
     }
   }
 
@@ -133,20 +138,77 @@ export const StateContextProvider = ({ children }) => {
     }
   }
 
-  const transferOwnership = async (addr) => {
+  const transferOwnership = async (CAddr, newOwner) => {
+    const ICOcontract = new ethers.Contract(
+      CAddr,
+      ABI,
+      signer
+    );
 
+    try {
+      const data = await ICOcontract.connect(signer).transferOwnership(newOwner);
+
+      console.log(data);
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
   }
 
-  const addICOAddress = async () => {
-    
+  const connectToken = async (CAddr, tokenAddr) => {
+    const ICOcontract = new ethers.Contract(
+      CAddr,
+      ABI,
+      signer
+    );
+
+    try {
+      const data = await ICOcontract.connect(signer).connectToOtherContracts([tokenAddr]);
+
+      console.log(data);
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const updateTokenPrice = async (CAddr, pricePerToken) => {
+    const ICOcontract = new ethers.Contract(
+      CAddr,
+      ABI,
+      signer
+    );
+
+    try {
+      const data = await ICOcontract.updatePriceForOneToken(ethers.utils.parseEther(pricePerToken));
+
+      console.log(data);
+      return data;
+    } catch (error) {
+      console.log(error);
+      return error
+    }
   }
 
   const transferICOToken = async () => {
     
   }
 
-  const withdrawRemainingToken = async () => {
-    
+  const withdrawRemainingToken = async (CAddr) => {
+    const ICOcontract = new ethers.Contract(
+      CAddr,
+      ABI,
+      signer
+    );
+
+    try {
+      const data = await ICOcontract.claimTokensNotSold();
+
+      console.log(data);
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
   }
 
     // const signer = provider.getSigner();
@@ -167,6 +229,10 @@ export const StateContextProvider = ({ children }) => {
         ICOPayment,
         getUserICOTokenBal,
         getEthBal,
+        transferOwnership,
+        connectToken,
+        updateTokenPrice,
+        withdrawRemainingToken
       }}
     >
       {children}

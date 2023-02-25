@@ -28,7 +28,7 @@ const ICOCard = ({ ico }) => {
       <div className="ICO border-2 border-[#D50DA8] rounded-2xl">
         <div className="ico_image flex relative">
           <span className="bg-[#fff] px-2 text-center rounded-xl absolute right-2 top-2 border-2 border-[#D50DA8]">{getICOStatus()}</span>
-          <img src={ICOBanner} className="rounded-t-2xl" alt="" height={200} width={300} />
+          <img src={ICOBanner} className="rounded-t-2xl w-full h-[200px]" alt="" />
         </div>
         <div className="bg-[#5B11F1] p-4 rounded-b-2xl">
           <div className="ico_text flex item-center justify-between">
