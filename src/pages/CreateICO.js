@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { ref, getDownloadURL, uploadBytesResumable } from 'firebase/storage';
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
@@ -170,7 +170,11 @@ const CreateICO = ({ address }) => {
           a comprehensive guide on how to go about it
         </p>
         <p className={style.color}>
-          Checkout the faq or contact support for further clarification
+          Checkout the
+          <Link to="/faq">
+            Faq
+          </Link>
+          or contact support for further clarification
         </p>
       </div>
       <form onSubmit={handleSubmit} className=" flex flex-col dark:bg-[#2D3133] p-4 md:w-4/5 m-auto rounded-2xl mb-2 py-4 bg-[#D9D9D9]">

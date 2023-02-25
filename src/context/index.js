@@ -8,7 +8,6 @@ const StateContext = createContext();
 
 export const StateContextProvider = ({ children }) => {
 
-
   // if (window.ethereum) {
     const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
     const signer = provider.getSigner();

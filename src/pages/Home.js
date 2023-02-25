@@ -59,7 +59,7 @@ const Home = () => {
             </div>
           </div>
           <h1 className="text-[#D50DA8] text-center my-2 font-extrabold">Partners</h1>
-          <ul className="partners flex justify-around item-center my-4">
+          <ul className="partners mb-28 flex justify-around item-center my-4">
             <li><img src={pancake} height={150} width={150} alt="pancake" /></li>
             <li><img src={ethers} height={150} width={150} alt="ethers" /></li>
             <li><img src={bunzz} height={150} width={150} alt="bunzz" /></li>

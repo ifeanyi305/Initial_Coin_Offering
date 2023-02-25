@@ -5,7 +5,7 @@ const Footer = () => {
     color: 'dark:text-[#fff]',
   };
   return (
-    <footer className="flex justify-between items-center bg-[#5B11F1] p-4">
+    <footer className="footer w-full flex bottom-0 justify-between items-center bg-[#5B11F1] p-4">
       <div>
         <p className={style.color}>Copyright&copy; of 2023</p>
         <p className={style.color}>All rights reserved</p>

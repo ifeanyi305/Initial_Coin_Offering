@@ -102,7 +102,7 @@ const IcoList = () => {
       </div>
       <section className="flex justify-center item-center mx-10">
         <div className="container">
-          <div className="ico_list-container mb-3 dark:bg-[#2D3133] rounded-3xl p-6 bg-[#D9D9D9]">
+          <div className="ico_list-container mb-28 dark:bg-[#2D3133] rounded-3xl p-6 bg-[#D9D9D9]">
             <div>
               <div className="md:flex justify-around p-4">
                 <input type="search" className="bg-[#fffff] border-2 w-100 p-2 rounded-full border-[#D50DA8]" name="search" id="search" placeholder="Search ICO" />
