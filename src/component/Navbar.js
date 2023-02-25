@@ -33,7 +33,7 @@ const Navbar = ({ connect, address }) => {
   };
   return (
     <>
-      <header className="flex flex-wrap justify-between items-center bg-[#5B11F1] p-4">
+      <header className="flex sticky z-50 w-full top-0 flex-wrap justify-between items-center bg-[#5B11F1] p-4">
         <img src={easylaunch} alt="Easy Launch" height={24} width={102} />
         <div className="flex items-center gap-2">
           <ul className="nav md:flex items-center flex-wrap">
