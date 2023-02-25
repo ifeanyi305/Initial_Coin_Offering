@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { BsSun, BsMoonFill } from 'react-icons/bs';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { Link } from 'react-router-dom';
+import easylaunch from '../images/easylaunch.png';
 
 const Navbar = ({ connect, address }) => {
   const style = {
@@ -32,8 +33,8 @@ const Navbar = ({ connect, address }) => {
   };
   return (
     <>
-      <header className="flex fixed top-0 z-20 left-0 right-0 w-full flex-wrap justify-between items-center bg-[#5B11F1] p-4">
-        <h1>Logo</h1>
+      <header className="flex flex-wrap justify-between items-center bg-[#5B11F1] p-4">
+        <img src={easylaunch} alt="Easy Launch" height={24} width={102} />
         <div className="flex items-center gap-2">
           <ul className="nav md:flex items-center flex-wrap">
             <li className={style.padding}><Link to="/">Home</Link></li>
@@ -41,6 +42,7 @@ const Navbar = ({ connect, address }) => {
             <li className={style.padding}><Link to="/CreateICO">Create ICO</Link></li>
             <li className={style.padding}><Link to="/dashboard">Dashboard</Link></li>
             <li className={style.padding}><Link to="/faq">FAQ</Link></li>
+            {/* <li className={style.padding}><Link to="/AdminDashboard">Admin</Link></li> */}
           </ul>
           <ul className={toggle ? 'ul' : 'ulOff'}>
             {/* eslint-disable-next-line */}

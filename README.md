@@ -1,81 +1,49 @@
-<a name="readme-top"></a>
 
-<!-- TABLE OF CONTENTS -->
+**Easy Launch**
 
-# 📗 Table of Contents
-
-- [📖 About the Project](#about-project)
-  - [🛠 Built With](#built-with)
-    - [Tech Stack](#tech-stack)
-    - [Key Features](#key-features)
-- [💻 Getting Started](#getting-started)
-  - [Setup](#setup)
-  - [Prerequisites](#prerequisites)
-  - [Usage](#usage)
-- [👥 Authors](#authors)
-- [🔭 Future Features](#future-features)
-- [🤝 Contributing](#contributing)
-- [⭐️ Show your support](#support)
-- [🙏 Acknowledgements](#acknowledgements)
-- [❓ FAQ (OPTIONAL)](#faq)
-- [📝 License](#license)
-
-<!-- PROJECT DESCRIPTION -->
-
-# 📖 Portfolio <a name="about-project"></a>
-
-**Easy Launch** Easy Launch is a cutting-edge web3 blockchain platform that provides an all-in-one solution for users seeking to launch their own cryptocurrency. With a robust and secure architecture, ICO enables users to create and manage their own digital assets and smart contracts, as well as conduct seamless and secure transactions on the blockchain. 
-
-## 🛠 Built With <a name="built-with"></a>
-
-### Tech Stack <a name="tech-stack"></a>
-
-- React JS
-- CSS
-<!-- Features -->
-
-### Key Features <a name="key-features"></a>
-
-- **write unit tests**
-- **Develop the code to make those tests pass**
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- GETTING STARTED -->
-
-## 💻 Getting Started <a name="getting-started"></a>
+Easy Launch is a cutting-edge web3 blockchain platform that provides an all-in-one solution for users seeking to launch their own cryptocurrency. With a robust and secure architecture, Easy Launch enables users to create and manage their own digital assets and smart contracts, as well as conduct seamless and secure transactions on the blockchain.
 
 To get a local copy up and running, follow these steps.
 
-### Prerequisites
+- npm
+  ```sh
+  npm install npm@latest -g
+  ```
 
-In order to run this project you need to install node modules:
 
-```sh
- npm install
-```
+
+**Install MetaMask**
+
+**Note: The project currently runs only on Goerli Testnet**
+
 
 ### Setup
 
-Clone this repository to your desired folder:
+1. Clone the repo by running the command
+   ```sh
+    git clone https://github.com/ifeanyi305/initial_coin_offering.git
+   ```
+2. Open the directory of the project
+   ```sh
+   cd initial_coin_offering
+   ```
+3. Install project dependencies
+   ```sh
+   run npm install
+   ```
+4. Open the html file
+   ```sh
+   run npm start
 
-```sh
-  cd my-folder
-  git clone github.com/ifeanyi305/my-portfolio.git
-```
+### Upcoming featues
 
-### Usage
+**USERS DEPLOY ICO CONTACT FROM THE FRONT END**
 
-To run the project, execute the following command:
+👤 **Author**
 
-```sh
-  cd my-portfolio
-  npm start
-```
-
-<!-- AUTHORS -->
-
-## 👥 Authors <a name="authors"></a>
+- GitHub: [@V-blaze](https://github.com/V-Blaze)
+- Twitter: [@blaze_valentine](https://twitter.com/blaze_valentine)
+- LinkedIn: [@valentine-blaze](https://www.linkedin.com/in/valentine-blaze/)
 
 👤 **Ifeanyi Oti**
 
@@ -83,56 +51,6 @@ To run the project, execute the following command:
 - Twitter: [@OtiJoseph305](https://twitter.com/OtiJoseph305)
 - LinkedIn: [oti-joseph-ifeanyi](https://linkedin.com/in/oti-joseph-ifeanyi)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- FUTURE FEATURES -->
 
-## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **Add complex methods**
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- CONTRIBUTING -->
-
-## 🤝 Contributing <a name="contributing"></a>
-
-Contributions, issues, and feature requests are welcome!
-
-Feel free to check the [issues page](../../issues/).
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- SUPPORT -->
-
-## ⭐️ Show your support <a name="support"></a>
-
-Put a star if you like this project.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- ACKNOWLEDGEMENTS -->
-
-## 🙏 Acknowledgments <a name="acknowledgements"></a>
-
-I would like to thank Microverse for project inspiration.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- FAQ (optional) -->
-
-## ❓ FAQ <a name="faq"></a>
-
-- **What version of React does this project work on ?**
-
-  - Any version above 2.6
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- LICENSE -->
-
-## 📝 License <a name="license"></a>
-
-This project is [MIT](./MIT.md) licensed.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
