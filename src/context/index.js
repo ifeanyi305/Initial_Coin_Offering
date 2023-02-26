@@ -106,7 +106,10 @@ export const StateContextProvider = ({ children }) => {
       const data = await ICOcontract.buy({ value: ethers.utils.parseEther(amount)});
 
       console.log('data', data);
-      return data;
+      return {
+        res: 'ok',
+        data,
+      }
     } catch (error) {
       return error;
     }
@@ -149,7 +152,10 @@ export const StateContextProvider = ({ children }) => {
       const data = await ICOcontract.connect(signer).transferOwnership(newOwner);
 
       console.log(data);
-      return data;
+      return {
+        res: 'ok',
+        data,
+      }
     } catch (error) {
       console.log(error);
     }
@@ -166,9 +172,14 @@ export const StateContextProvider = ({ children }) => {
       const data = await ICOcontract.connect(signer).connectToOtherContracts([tokenAddr]);
 
       console.log(data);
-      return data;
+      return {
+        res: 'ok',
+        data,
+      }
     } catch (error) {
       console.log(error);
+      return error;
+      // console.log(error.message)
     }
   }
 
@@ -182,15 +193,56 @@ export const StateContextProvider = ({ children }) => {
     try {
       const data = await ICOcontract.updatePriceForOneToken(ethers.utils.parseEther(pricePerToken));
 
-      console.log(data);
+      // console.log(data);
       return data;
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       return error
     }
   }
 
-  const transferICOToken = async () => {
+  const transferICOToken = async (tokenAddr, CAddr, tokenAmount) => {
+    const TokenContract = new ethers.Contract(
+      tokenAddr,
+      ERC20abi,
+      signer
+    );
+
+    try {
+
+    const amount = ethers.utils.parseUnits(tokenAmount, 18);
+      //Define the data parameter
+    // const data = TokenContract.interface.encodeFunctionData("transfer", [CAddr, amount] )
+    // // const data = await TokenContract.connect(signer).transfer(CAddr, ethers.utils.parseEther(tokenAmount));
+
+    // const tx = await signer.sendTransaction({
+    //   to: CAddr,
+    //   from: signer.address,
+    //   value: amount,
+    //   data: data  
+    //     });
+    // const contractSigner = contract.connect(signer)
+    const tx = await TokenContract.transfer(CAddr, amount);
+
+        console.log("Mining transaction...");
+        // console.log(`https://${network}.etherscan.io/tx/${tx.hash}`);
+  
+        // Waiting for the transaction to be mined
+        const receipt = await tx.wait();
+  
+        // The transaction is now on chain!
+        console.log(`Mined in block ${receipt.blockNumber}`);
+
+    // console.log(data);
+      return {
+        res: 'ok',
+        data,
+      }
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
+
     
   }
 
@@ -232,7 +284,8 @@ export const StateContextProvider = ({ children }) => {
         transferOwnership,
         connectToken,
         updateTokenPrice,
-        withdrawRemainingToken
+        withdrawRemainingToken,
+        transferICOToken,
       }}
     >
       {children}

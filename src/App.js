@@ -44,8 +44,8 @@ const App = () => {
           <Route path="/ico-list" element={<IcoList />} />
           <Route path="/details/:id" element={<Details address={address} />} />
           <Route path="/CreateICO" element={<CreateICO address={address} />} />
-          <Route path="/dashboard" element={<ManageIco />} />
-          <Route path="/AdminDashboard" element={<AdminDashboard />} />
+          <Route path="/dashboard" element={<ManageIco address={address} />} />
+          <Route path="/AdminDashboard" element={<AdminDashboard address={address} />} />
           <Route path="/faq" element={<Faq />} />
         </Routes>
         <ToastContainer
