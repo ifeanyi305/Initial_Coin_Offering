@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 // eslint-disable-next-line
+import { doc, updateDoc } from 'firebase/firestore';
 import PropTypes from 'prop-types';
+import { toast } from 'react-toastify';
+import { db } from '../firebase';
 import { useStateContext } from '../context';
 
 const Wallet = ({ ICO, address }) => {
@@ -8,7 +11,7 @@ const Wallet = ({ ICO, address }) => {
   const [ETHBal, setETHBal] = useState(0);
   const [ICOTokenBal, setICOTokenBal] = useState(0);
   const {
-    endDate, startDate, AmountToRaise, AmountRaised, tokenAddress, tokenSymbol, IcoAddress,
+    endDate, startDate, AmountToRaise, AmountRaised, tokenAddress, tokenSymbol, IcoAddress, id,
   } = ICO;
 
   const { getUserICOTokenBal, getEthBal, buyICO } = useStateContext();
@@ -26,11 +29,29 @@ const Wallet = ({ ICO, address }) => {
     return 'Checking...';
   };
 
-  const buyTokenICO = async (e) => {
+  const updateAmountRaised = async (id) => {
+    try {
+      await updateDoc(doc(db, 'ICOs', id), {
+        AmountRaised: buyAmount.toString(),
+      });
+      // toast.success('Your ICO Is now Active');
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const buyTokenICO = async (e, id) => {
     e.preventDefault();
 
-    const data = await buyICO(IcoAddress, buyAmount);
-    console.log(data);
+    const data = await buyICO(IcoAddress, buyAmount.toString());
+    // console.log(data);
+
+    if (data?.res) {
+      toast.success('ICO Bought Successfully');
+      await updateAmountRaised(id);
+    } else {
+      toast.error(data.reason);
+    }
     return data;
   };
 
@@ -75,7 +96,7 @@ const Wallet = ({ ICO, address }) => {
         <button
           type="button"
           className="btn bg-[#D50DA8] px-4 py-1  rounded-xl border-[2px] border-white text-[#fff] mx-2 my-4"
-          onClick={(e) => buyTokenICO(e)}
+          onClick={(e) => buyTokenICO(e, id)}
         >
           Buy ICO
         </button>

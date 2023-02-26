@@ -7,7 +7,7 @@ const AdminPendingIco = ({
   const [contractAddress, setContractAddress] = useState('');
   const {
     tokenName, startDate, endDate, id, logoImage, tokenAddress,
-    tokenAmount, IcoAddress, ETHpricePerToken,
+    tokenAmount, IcoAddress, ETHpricePerToken, IcoOwner,
   } = ico;
 
   console.log(startDate, endDate, id);
@@ -76,7 +76,7 @@ const AdminPendingIco = ({
           </button>
           <button
             type="button"
-            onClick={() => transferOwner(IcoAddress, tokenAddress)}
+            onClick={() => transferOwner(IcoAddress, IcoOwner)}
             className="bg-[#D50DA8] px-2 py-1  rounded-xl border-[2px] border-white text-[#D9D9D9]"
           >
             Transfer Ownership
