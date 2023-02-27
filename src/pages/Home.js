@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import FeaturedICO from '../component/FeaturedICO';
 import pancake from '../images/Pancake.png';
 import ethers from '../images/ethers.png';
@@ -25,7 +25,7 @@ const Home = () => {
         <p className="text-center dark:text-[#fff] px-4">Create, Host and Participate in crypto ICO’s with ease. All the tools you need have been integrated seamlessly for you.</p>
         <div className="flex justify-center item-center mt-4">
           <button type="button" onClick={createIco} className="btn bg-[#D50DA8] px-4 py-1  rounded-xl border-[2px] border-white text-[#fff] mx-2 my-4">Launchpad</button>
-          <button type="button" className="btn bg-[#D50DA8] px-4 py-1  rounded-xl border-[2px] border-white text-[#fff] mx-2 my-4">Learn more</button>
+          <button type="button" className="btn bg-[#D50DA8] px-4 py-1  rounded-xl border-[2px] border-white text-[#fff] mx-2 my-4"><Link to="/faq">Learn more</Link></button>
         </div>
         <ul className={!featured ? 'hidden' : 'launchpad p-4 mt-2 flex justify-center item-center border-2 bg-[#D9D9D9] dark:bg-[#2D3133] border-[#5B11F1] rounded-2xl'}>
           <div className="flex justify-between item-center gap-x-4">

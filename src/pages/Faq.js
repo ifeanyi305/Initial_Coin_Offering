@@ -36,7 +36,7 @@ const Faq = () => {
   ];
 
   return (
-    <>
+    <section>
       <div>
         <h1 className="dark:text-[#fff] text-[#D50DA8] font-extrabold text-center my-4">Facts & Questions</h1>
         <p className="dark:text-[#fff] font-extrabold mb-6 text-center">If you have a question about Ico, you are in the right place.</p>
@@ -58,7 +58,7 @@ const Faq = () => {
           }
         </div>
       </div>
-    </>
+    </section>
   );
 };
 

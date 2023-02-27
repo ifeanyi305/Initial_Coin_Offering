@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  height: 100%;
+  margin: 0; /* remove default margin */
+  padding: 0; /* remove default padding */
+}
+
+section {
+  margin: auto;
+}
+
 .launchpad {
   width: fit-content;
   margin: auto;
