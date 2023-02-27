@@ -4,10 +4,13 @@ import {
   getDocs,
   orderBy,
   query,
+  doc,
+  updateDoc,
 } from 'firebase/firestore';
 // eslint-disable-next-line
 import PropTypes from 'prop-types';
-// import { toast } from 'react-toastify';
+import { toast } from 'react-toastify';
+import { useStateContext } from '../context';
 import { db } from '../firebase';
 import PendingIco from '../component/PendingIco';
 import ActiveICO from '../component/ActiveICO';
@@ -16,6 +19,8 @@ const ManageIco = ({ address }) => {
   const [ICOs, setICOs] = useState([]);
   const [userICOs, setUserICOs] = useState([]);
   const [pendingICOs, setPendingICOs] = useState(null);
+
+  const { transferICOToken } = useStateContext();
 
   const getICOData = async () => {
     // setLoading(true);
@@ -32,6 +37,28 @@ const ManageIco = ({ address }) => {
     setUserICOs(AllUserICOs);
     const AllpendingICOs = AllUserICOs.filter((ico) => ico.status === 'pending');
     setPendingICOs(AllpendingICOs);
+  };
+
+  const activateICO = async (id) => {
+    try {
+      await updateDoc(doc(db, 'ICOs', id), {
+        status: 'active',
+      });
+      toast.success('Your ICO Is now Active');
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const transferToken = async (tokenAddr, CAddr, tokenAmount, id) => {
+    const data = await transferICOToken(tokenAddr, CAddr, tokenAmount);
+    console.log(data, 'tt');
+    if (data.res) {
+      toast.success('ICO Token Transfered successfully');
+      await activateICO(id);
+    } else {
+      toast.error(data.reason);
+    }
   };
 
   useEffect(() => {
@@ -70,6 +97,7 @@ const ManageIco = ({ address }) => {
                   <PendingIco
                     key={ico.id}
                     ico={ico}
+                    transferToken={transferToken}
                   />
                 ))
               )}

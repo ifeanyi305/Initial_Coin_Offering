@@ -35,36 +35,32 @@ const App = () => {
   return (
     <>
       <body className="dark:bg-[#181A1B]">
-        <div className="wrapper">
-          <div className="content">
-            <Navbar
-              address={address}
-              connect={connect}
-            />
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/ico-list" element={<IcoList />} />
-              <Route path="/details/:id" element={<Details address={address} />} />
-              <Route path="/CreateICO" element={<CreateICO address={address} />} />
-              <Route path="/dashboard" element={<ManageIco />} />
-              <Route path="/AdminDashboard" element={<AdminDashboard />} />
-              <Route path="/faq" element={<Faq />} />
-            </Routes>
-            <ToastContainer
-              position="top-center"
-              autoClose={5000}
-              hideProgressBar={false}
-              newestOnTop={false}
-              closeOnClick
-              rtl={false}
-              pauseOnFocusLoss
-              draggable
-              pauseOnHover
-              theme="colored"
-            />
-          </div>
-          <Footer />
-        </div>
+        <Navbar
+          address={address}
+          connect={connect}
+        />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/ico-list" element={<IcoList />} />
+          <Route path="/details/:id" element={<Details address={address} />} />
+          <Route path="/CreateICO" element={<CreateICO address={address} />} />
+          <Route path="/dashboard" element={<ManageIco address={address} />} />
+          <Route path="/AdminDashboard" element={<AdminDashboard address={address} />} />
+          <Route path="/faq" element={<Faq />} />
+        </Routes>
+        <ToastContainer
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
+        />
+        <Footer />
       </body>
     </>
   );

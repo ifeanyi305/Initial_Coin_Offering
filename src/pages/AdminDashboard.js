@@ -4,7 +4,6 @@ import {
   getDocs,
   orderBy,
   query,
-  // serverTimestamp,
   doc,
   updateDoc,
 } from 'firebase/firestore';
@@ -44,7 +43,6 @@ const AdminDashboard = ({ address }) => {
     try {
       await updateDoc(doc(db, 'ICOs', id), {
         IcoAddress: CA,
-        // timestamp: serverTimestamp(),
       });
       toast.success('ICO Address updated successfully');
     } catch (err) {
@@ -52,25 +50,28 @@ const AdminDashboard = ({ address }) => {
     }
   };
 
-  const transferOwner = async (IcoAddress, tokenAddress) => {
-    try {
-      await transferOwnership(IcoAddress, tokenAddress);
+  const transferOwner = async (IcoAddress, IcoOwner) => {
+    const data = await transferOwnership(IcoAddress, IcoOwner);
+    if (data?.res) {
       toast.success('Ownership Transfered successfully');
-    } catch (err) {
-      toast.error(err.reason);
+    } else {
+      toast.error(data.reason);
     }
   };
+
   const connectCA = async (IcoAddress, tokenAddress) => {
-    try {
-      await connectToken(IcoAddress, tokenAddress);
+    const data = await connectToken(IcoAddress, tokenAddress);
+    console.log(data, 'conn');
+    if (data?.res) {
       toast.success('Contract added successfully');
-    } catch (err) {
-      toast.error(err.reason);
+    } else {
+      toast.error(data.reason);
     }
   };
+
   const updatePrice = async (IcoAddress, ETHpricePerToken) => {
     const data = await updateTokenPrice(IcoAddress, ETHpricePerToken);
-    console.log('here', data);
+    // console.log('here', data);
     if (data.res) {
       toast.success('Price Updated successfully');
     } else {
@@ -102,8 +103,6 @@ const AdminDashboard = ({ address }) => {
           <div>
             <h1 className={manage.style}>Pending ICO</h1>
             <div className="bg-[#D9D9D9] md:w-96 my-4 w-full p-4 rounded-2xl flex flex-col gap-4">
-              {/* <h1 className={manage.font}>The ICO will be active in</h1> */}
-              {/* <p className="bg-[#D50DA8] my-2 text-center p-1 rounded-2xl">00:04:10:50</p> */}
               {pendingICOs && (
                 pendingICOs.map((ico) => (
                   <AdminPendingIco
@@ -116,7 +115,6 @@ const AdminDashboard = ({ address }) => {
                   />
                 ))
               )}
-              {/* <AdminPendingIco /> */}
             </div>
           </div>
           <div>
@@ -130,7 +128,6 @@ const AdminDashboard = ({ address }) => {
                   />
                 ))
               )}
-              {/* <AdminactiveICO /> */}
             </div>
           </div>
         </div>

@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const PendingIco = ({ ico }) => {
+const PendingIco = ({ ico, transferToken }) => {
   const {
     tokenName, startDate, endDate, id, logoImage, tokenAddress, tokenAmount, IcoAddress,
   } = ico;
 
-  console.log(startDate, endDate, id);
+  console.log(startDate, endDate);
 
   const manage = {
     style: 'text-[#D50DA8] text-center my-2 font-extrabold',
@@ -41,13 +41,22 @@ const PendingIco = ({ ico }) => {
           </div>
         </div>
       </div>
+      <div className="flex justify-center items-center">
+        <button
+          type="button"
+          onClick={() => transferToken(tokenAddress, IcoAddress, tokenAmount, id)}
+          className="bg-[#D50DA8] px-2 py-1  rounded-xl border-[2px] border-white text-[#D9D9D9]"
+        >
+          Transfer Token
+        </button>
+      </div>
     </>
   );
 };
 
 PendingIco.propTypes = {
   ico: PropTypes.oneOfType([PropTypes.object]).isRequired,
-  // showDetails: PropTypes.func.isRequired,
+  transferToken: PropTypes.func.isRequired,
 };
 
 export default PendingIco;
