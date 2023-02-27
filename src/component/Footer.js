@@ -99,8 +99,12 @@ const Footer = () => {
         </div>
       </section>
       <hr className="text-[#D9D9D9] p-6" />
-      <div className="flex p-6 items-center justify-between">
+      <div className="flex gap-2 flex-wrap p-6 items-center justify-between">
         <p className="text-[#fff]">copyright &copy;2023 All rights reserved</p>
+        <p className="text-center text-[#fff]">
+          Powered by
+          <span className="text-[#D50DA8] font-extrabold"><a href="https://app.bunzz.dev/" target="_blank" rel="noreferrer"> BUNZZ</a></span>
+        </p>
         <p className="text-[#fff]">Built by V-Blaze and Ifeanyi</p>
       </div>
     </footer>
