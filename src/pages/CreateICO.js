@@ -190,110 +190,111 @@ const CreateICO = ({ address }) => {
           or contact support for further clarification
         </p>
       </div>
-      <form onSubmit={handleSubmit} className=" flex flex-col dark:bg-[#2D3133] p-4 md:w-4/5 m-auto rounded-2xl mb-2 py-4 bg-[#D9D9D9]">
-        <div>
-          <h1 className={style.formColor}>Token Details</h1>
-          <FormFeild
-            handleChange={(e) => handleAddress(e)}
-            value={tokenAddress}
-            inputType="text"
-            label="Paste Your Token Contract Address"
-          />
-          <div className="flex w-4/5 justify-between items-center font-bold text-green-600">
-            <span>{tokenData && tokenData.tokenName}</span>
-            <span>{tokenData && tokenData.tokenSymbol}</span>
-            <span>{tokenData && parseFloat(tokenData.totalSupply).toLocaleString('en') }</span>
-          </div>
-          {/* <span>{errorMsg && errorMsg}</span> */}
-        </div>
-        <h1 className={style.formColor}>ICO Details</h1>
-        <div className={style.formGrid}>
-          <FormFeild
-            handleChange={(e) => handleChange('tokenAmount', e)}
-            value={tokenAmount}
-            inputType="number"
-            label="Token amount for ICO *"
-          />
-          <FormFeild
-            handleChange={(e) => handleChange('AmountToRaise', e)}
-            value={AmountToRaise}
-            inputType="number"
-            label="Target amount in ETH *"
-          />
-          <FormFeild
-            handleChange={(e) => handleChange('startDate', e)}
-            value={startDate}
-            inputType="date"
-            label="Start date *"
-          />
-          <FormFeild
-            handleChange={(e) => handleChange('endDate', e)}
-            value={endDate}
-            inputType="date"
-            label="End date *"
-          />
-        </div>
-        <h1 className={style.formColor}>Additional Details</h1>
-        <div className={style.formGrid}>
-          <FormFeild
-            handleChange={(e) => handleChange('websiteLink', e)}
-            value={websiteLink}
-            inputType="text"
-            label="Website Link"
-          />
-          <FormFeild
-            handleChange={(e) => handleChange('twitterLink', e)}
-            value={twitterLink}
-            inputType="text"
-            label="Twitter link"
-          />
-          <FormFeild
-            handleChange={(e) => handleChange('telegramLink', e)}
-            value={telegramLink}
-            inputType="text"
-            label="Telegram link"
-          />
-          <FormFeild
-            handleChange={(e) => handleChange('otherLink', e)}
-            value={otherLink}
-            inputType="text"
-            label="Other link"
-          />
+      <section>
+        <form onSubmit={handleSubmit} className=" flex flex-col dark:bg-[#2D3133] p-4 md:w-4/5 m-auto rounded-2xl mb-2 py-4 bg-[#D9D9D9]">
           <div>
-            <span htmlFor="userinput" className="dark:text-[#fff]" aria-label="">Upload Token Logo 32x32 *</span>
-            <input
-              id="userinput"
-              className="input border-2 p-4 border-[#D50DA8] bg-[#fff] dark:bg-[#000] dark:border-[#fff] rounded-2xl block"
-              type="file"
-              onChange={(e) => handleUpload('logo', e)}
+            <h1 className={style.formColor}>Token Details</h1>
+            <FormFeild
+              handleChange={(e) => handleAddress(e)}
+              value={tokenAddress}
+              inputType="text"
+              label="Paste Your Token Contract Address"
+            />
+            <div className="flex w-4/5 justify-between items-center font-bold text-green-600">
+              <span>{tokenData && tokenData.tokenName}</span>
+              <span>{tokenData && tokenData.tokenSymbol}</span>
+              <span>{tokenData && parseFloat(tokenData.totalSupply).toLocaleString('en')}</span>
+            </div>
+            {/* <span>{errorMsg && errorMsg}</span> */}
+          </div>
+          <h1 className={style.formColor}>ICO Details</h1>
+          <div className={style.formGrid}>
+            <FormFeild
+              handleChange={(e) => handleChange('tokenAmount', e)}
+              value={tokenAmount}
+              inputType="number"
+              label="Token amount for ICO *"
+            />
+            <FormFeild
+              handleChange={(e) => handleChange('AmountToRaise', e)}
+              value={AmountToRaise}
+              inputType="number"
+              label="Target amount in ETH *"
+            />
+            <FormFeild
+              handleChange={(e) => handleChange('startDate', e)}
+              value={startDate}
+              inputType="date"
+              label="Start date *"
+            />
+            <FormFeild
+              handleChange={(e) => handleChange('endDate', e)}
+              value={endDate}
+              inputType="date"
+              label="End date *"
             />
           </div>
-          <div>
-            <span htmlFor="userinput" className="dark:text-[#fff]" aria-label="">ICO Banner not more than 5MB *</span>
-            <input
-              id="userinput"
-              className="input border-2 p-4 border-[#D50DA8] bg-[#fff] dark:bg-[#000] dark:border-[#fff] rounded-2xl block"
-              type="file"
-              onChange={(e) => handleUpload('banner', e)}
+          <h1 className={style.formColor}>Additional Details</h1>
+          <div className={style.formGrid}>
+            <FormFeild
+              handleChange={(e) => handleChange('websiteLink', e)}
+              value={websiteLink}
+              inputType="text"
+              label="Website Link"
             />
+            <FormFeild
+              handleChange={(e) => handleChange('twitterLink', e)}
+              value={twitterLink}
+              inputType="text"
+              label="Twitter link"
+            />
+            <FormFeild
+              handleChange={(e) => handleChange('telegramLink', e)}
+              value={telegramLink}
+              inputType="text"
+              label="Telegram link"
+            />
+            <FormFeild
+              handleChange={(e) => handleChange('otherLink', e)}
+              value={otherLink}
+              inputType="text"
+              label="Other link"
+            />
+            <div>
+              <span htmlFor="userinput" className="dark:text-[#fff]" aria-label="">Upload Token Logo 32x32 *</span>
+              <input
+                id="userinput"
+                className="input border-2 p-4 border-[#D50DA8] bg-[#fff] dark:bg-[#fff] dark:border-[#fff] rounded-2xl block"
+                type="file"
+                onChange={(e) => handleUpload('logo', e)}
+              />
+            </div>
+            <div>
+              <span htmlFor="userinput" className="dark:text-[#fff]" aria-label="">ICO Banner not more than 5MB *</span>
+              <input
+                id="userinput"
+                className="input border-2 p-4 border-[#D50DA8] bg-[#fff] dark:bg-[#fff] dark:border-[#fff] rounded-2xl block"
+                type="file"
+                onChange={(e) => handleUpload('banner', e)}
+              />
+            </div>
           </div>
-        </div>
-        <p>Project Details</p>
-        <textarea
-          value={description}
-          onChange={(e) => handleChange('description', e)}
-          rows="5"
-          cols="30"
-          className="flex p-4 my-2 items-start border-2 border-[#D50DA8] bg-[#fff] dark:bg-[#000] dark:border-[#fff] rounded-2xl"
-        />
-        <span className=" text-blue-600 font-bold">
-          {pricePerToken}
-          {' '}
-          ETH per Token
-        </span>
-
-        <button type="submit" className="btn bg-[#D50DA8] px-4 py-1 self-center  rounded-xl border-[2px] border-white text-[#fff] mx-2 my-4">Create ICO</button>
-      </form>
+          <p className="dark:text-[#fff]">Project Details</p>
+          <textarea
+            value={description}
+            onChange={(e) => handleChange('description', e)}
+            rows="5"
+            cols="30"
+            className="flex p-4 my-2 items-start border-2 border-[#D50DA8] bg-[#fff] dark:bg-[#fff] dark:border-[#fff] rounded-2xl"
+          />
+          <span className=" text-blue-600 font-bold">
+            {pricePerToken}
+            {' '}
+            ETH per Token
+          </span>
+          <button type="submit" className="btn bg-[#D50DA8] px-4 py-1 self-center  rounded-xl border-[2px] border-white text-[#fff] mx-2 my-4">Create ICO</button>
+        </form>
+      </section>
     </>
   );
 };
