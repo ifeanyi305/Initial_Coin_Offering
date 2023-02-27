@@ -13,7 +13,7 @@ const Footer = () => {
     icon: 'bg-[#fff]',
   };
   return (
-    <footer className="bg-[#5B11F1]">
+    <footer className="bg-[#5B11F1] w-full">
       <section className="flex flex-wrap footer justify-between bottom-0 items-start bg-[#5B11F1] p-6">
         <div>
           <div className="flex items-center mt-4 gap-2">
