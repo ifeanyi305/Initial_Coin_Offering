@@ -13,7 +13,7 @@ const Footer = () => {
     icon: 'bg-[#fff]',
   };
   return (
-    <footer className="bg-[#5B11F1]">
+    <footer className="bg-[#5B11F1] w-full">
       <section className="flex flex-wrap footer justify-between bottom-0 items-start bg-[#5B11F1] p-6">
         <div>
           <div className="flex items-center mt-4 gap-2">
@@ -99,8 +99,12 @@ const Footer = () => {
         </div>
       </section>
       <hr className="text-[#D9D9D9] p-6" />
-      <div className="flex p-6 items-center justify-between">
+      <div className="flex gap-2 flex-wrap p-6 items-center justify-between">
         <p className="text-[#fff]">copyright &copy;2023 All rights reserved</p>
+        <p className="text-center text-[#fff]">
+          Powered by
+          <span className="text-[#D50DA8] font-extrabold"><a href="https://app.bunzz.dev/" target="_blank" rel="noreferrer"> BUNZZ</a></span>
+        </p>
         <p className="text-[#fff]">Built by V-Blaze and Ifeanyi</p>
       </div>
     </footer>
