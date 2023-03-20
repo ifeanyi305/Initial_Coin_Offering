@@ -4,6 +4,8 @@ Easy Launch is a cutting-edge web3 blockchain platform that provides an all-in-o
 
 link to FIGMA Wire-frame: https://www.figma.com/file/FgPHmaBu3fzmEpSWUqpHjp/Untitled?node-id=89%3A36&t=h8OaQiZsPYFOdqAm-0
 
+[Live Demo](https://easylaunch.onrender.com/)
+
 To get a local copy up and running, follow these steps.
 
 - npm
