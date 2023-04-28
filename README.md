@@ -2,7 +2,7 @@
 
 Easy Launch is a cutting-edge web3 blockchain platform that provides an all-in-one solution for users seeking to launch their own cryptocurrency. With a robust and secure architecture, Easy Launch enables users to create and manage their own digital assets and smart contracts, as well as conduct seamless and secure transactions on the blockchain.
 
-link to FIGMA Wire-frame: https://www.figma.com/file/FgPHmaBu3fzmEpSWUqpHjp/Untitled?node-id=89%3A36&t=h8OaQiZsPYFOdqAm-0
+link to FIGMA Wire-frame: [Easy Launch](https://www.figma.com/file/FgPHmaBu3fzmEpSWUqpHjp/Untitled?node-id=89%3A36&t=h8OaQiZsPYFOdqAm-0)
 
 [Live Demo](https://easylaunch.onrender.com/)
 
